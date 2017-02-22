@@ -36,7 +36,10 @@ class App extends Component {
         <Dropzone onDrop={this.onDrop.bind(this)} className={'my-dropzone'}>
           {
             isUploading
-            ? <Spinner />
+            ? <div>
+              <Spinner />
+              <p>Wait for it...</p>
+            </div>
             : preview.length > 0
               ? <div>
                 <img src={preview} width='160'/>
@@ -69,7 +72,8 @@ class App extends Component {
     const body = new FormData()
     body.append('image', firstFile)
     this.setState({
-      isUploading: true
+      isUploading: true,
+      faces: []
     })
     fetch('http://cors-anywhere.herokuapp.com/http://faces.thehive.ai/classify', {
       method: 'POST',
