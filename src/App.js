@@ -75,7 +75,7 @@ class App extends Component {
       isUploading: true,
       faces: []
     })
-    fetch('http://cors-anywhere.herokuapp.com/http://faces.thehive.ai/classify', {
+    fetch('https://cors-anywhere.herokuapp.com/http://faces.thehive.ai/classify', {
       method: 'POST',
       body
     })
