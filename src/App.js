@@ -75,15 +75,15 @@ class App extends Component {
       isUploading: true,
       faces: []
     })
-    fetch('https://cors-anywhere.herokuapp.com/https://devel.thehive.ai/classify?endpoint=celebfaces', {
+    fetch('https://cors-anywhere.herokuapp.com/https://devel.thehive.ai/classify?endpoint=celebfaces&debug=wompwomp', {
       method: 'POST',
       body
     })
     .then(checkStatus)
     .then(parseJSON)
     .then(data => {
-      const faces = data.full_probabilities[0].bounding_boxes.length > 0
-      ? data.full_probabilities[0].bounding_boxes[0].celeb_score_list
+      const faces = data.timeline[0].bounding_boxes.length > 0
+      ? data.timeline[0].bounding_boxes[0].celeb_score_list
       : []
       this.setState({
         isUploading: false,
